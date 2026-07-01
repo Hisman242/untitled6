@@ -18,6 +18,28 @@ public class CircularList {
             current.next = newLink;
         }
     }
+    public long removeCurrent() {
+        if(current == null){
+            System.out.println("List is empty");
+            return -1;
+        } else  if(current.next == current){
+            Link temp = current;
+            current = null;
+            return temp.dData;
+        }else{
+            Link temp = current;
+            while (temp.next != current){
+                temp = temp.next;
+            }
+            Link returnLink = current;
+            temp.next = current.next;
+            current = current.next;
+            return returnLink.dData;
+        }
+    }
+
+
+
     public long remove(){
         if(current == null){
             System.out.println("List is empty");
@@ -39,7 +61,7 @@ public class CircularList {
         if(temp == null){
             System.out.println("List is empty");
             return -1;
-        }if(current.next == current && current.dData == value){
+        }else if(current.next == current && current.dData == value){
             returnLink = current;
             current = null;
             return returnLink.dData;
@@ -125,6 +147,7 @@ public class CircularList {
         System.out.println();
 
     }
+
     public long peek(){
         Link temp = current;
         if(temp == null){
