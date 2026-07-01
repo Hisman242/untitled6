@@ -28,7 +28,7 @@ public class JosephusProblem {
         int countOfPerson = Integer.parseInt(bufferedReader.readLine());
 
         System.out.println("Введите позицию начального человка:");
-        int posOfPerson = Integer.parseInt(bufferedReader.readLine());
+        int startPersonId = Integer.parseInt(bufferedReader.readLine());
 
         System.out.println("Введите шаг:");
         int step = Integer.parseInt(bufferedReader.readLine());
@@ -36,7 +36,7 @@ public class JosephusProblem {
             Person person = new Person(i);
             circularList.insert(person.getId() + 1);
         }
-        for (int i = 0; i < posOfPerson - 1; i++) {
+        for (int i = 0; i < startPersonId - 1; i++) {
             circularList.step();
         }
         System.out.println("Вывод после того, как мы передвинули позицию к начальному человку:");
@@ -44,12 +44,10 @@ public class JosephusProblem {
         while (countOfPerson > 1){
 
             System.out.println("Делаем шаги указанные пользователем");
-            int index = 0;
-            for (int i = 0; i < step - 1; i++) {
-                index = i;
+            for (int i = 0; i < step; i++) {
                 circularList.step();
             }
-            System.out.println(circularList.remove(index));
+            System.out.println(circularList.removeCurrent());
             System.out.println("Удалили человека");
             countOfPerson--;
             circularList.display();
