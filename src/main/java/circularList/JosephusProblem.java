@@ -32,27 +32,27 @@ public class JosephusProblem {
 
         System.out.println("Введите шаг:");
         int step = Integer.parseInt(bufferedReader.readLine());
-        for (int i = 0; i < countOfPerson; i++) {
-            Person person = new Person(i);
-            circularList.insert(person.getId() + 1);
+        circularList.insert(1);
+        for (int i = countOfPerson; i > 1 ; i--) {
+            circularList.insert(i);
         }
         for (int i = 0; i < startPersonId - 1; i++) {
             circularList.step();
         }
-        System.out.println("Вывод после того, как мы передвинули позицию к начальному человку:");
+        System.out.println("Круг после перехода к начальному человеку:");
         circularList.display();
         while (countOfPerson > 1){
 
-            System.out.println("Делаем шаги указанные пользователем");
+            System.out.println("Делаем шаги указанные пользователем:");
             for (int i = 0; i < step; i++) {
                 circularList.step();
             }
-            System.out.println(circularList.removeCurrent());
-            System.out.println("Удалили человека");
+            System.out.println("Удалили человека: " + circularList.removeCurrent());
             countOfPerson--;
+            System.out.println("Круг после удаления:");
             circularList.display();
 
         }
-        System.out.println("Победил " + circularList.peek());
+        System.out.println("Победил: " + circularList.peek());
     }
 }
