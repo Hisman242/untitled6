@@ -9,11 +9,13 @@ public class SortingBenchmark {
         ArraySel selectionArray = new ArraySel(maxSize);
         ArrayIns insertionArray = new ArrayIns(maxSize);
         DArray mergeArray = new DArray(maxSize);
-
-        // Во все 4 массива вставляются ОДНИ И ТЕ ЖЕ числа
+        ArraySh arraySh = new ArraySh(maxSize);
+        QuickSort3V quickSort3V = new QuickSort3V(maxSize);
+        // Во все 6 массивов вставляются ОДНИ И ТЕ ЖЕ числа
         for (int i = 0; i < maxSize; i++) {
             long number = (long) (Math.random() * 100_000);
-
+            quickSort3V.insert(number);
+            arraySh.insert(number);
             bubbleArray.insert(number);
             selectionArray.insert(number);
             insertionArray.insert(number);
@@ -58,5 +60,23 @@ public class SortingBenchmark {
         end = System.currentTimeMillis();
 
         System.out.println("Merge Sort: " + (end - start) / 1000.0 + " секунд");
+
+        // Shell Sort
+        start = System.currentTimeMillis();
+
+        arraySh.shellSort();
+
+        end = System.currentTimeMillis();
+
+        System.out.println("Shell Sort: " + (end - start) / 1000.0 + " секунд");
+
+        // QuickSort version 3
+        start = System.currentTimeMillis();
+
+        quickSort3V.quickSort();
+
+        end = System.currentTimeMillis();
+
+        System.out.println("QuickSort version 3: " + (end - start) / 1000.0 + " секунд");
     }
 }
