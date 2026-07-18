@@ -46,6 +46,10 @@ public class RadixSort {
     public void radixSort(){
         //Формула для получения конкретной цифры = (число / делитель) % 10
         //Число - temp,  делитель - divider
+        if(nItems == 0){
+            System.out.println("Array is empty");
+            return;
+        }
         maximumNumber();
 
         long divider = 1;
