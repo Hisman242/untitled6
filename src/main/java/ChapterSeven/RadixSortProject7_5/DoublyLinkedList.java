@@ -1,8 +1,7 @@
 package ChapterSeven.RadixSortProject7_5;
 
 
-class DoublyLinkedList
-{
+class DoublyLinkedList {
     private Link first;         // Ссылка на первый элемент списка
     private Link last;          // Ссылка на последний элемент списка
     // -------------------------------------------------------------
@@ -70,8 +69,7 @@ class DoublyLinkedList
         return true;
     }
     // -------------------------------------------------------------
-    public Link deleteFirst()
-    {
+    public Link deleteFirst() {
         Link temp = first;
 
         if(first.next == null)
