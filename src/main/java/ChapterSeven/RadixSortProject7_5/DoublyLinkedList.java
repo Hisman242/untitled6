@@ -34,10 +34,9 @@ class DoublyLinkedList
     {
         Link newLink = new Link(dd);
 
-        if(isEmpty())
+        if(isEmpty()){
             first = newLink;
-        else
-        {
+        } else {
             last.next = newLink;
             newLink.previous = last;
         }
@@ -45,12 +44,10 @@ class DoublyLinkedList
         last = newLink;
     }
     // -------------------------------------------------------------
-    public boolean insertAfter(long key, long dd)
-    {
+    public boolean insertAfter(long key, long dd) {
         Link current = first;
 
-        while(current.dData != key)
-        {
+        while(current.dData != key) {
             current = current.next;
 
             if(current == null)
@@ -59,13 +56,10 @@ class DoublyLinkedList
 
         Link newLink = new Link(dd);
 
-        if(current == last)
-        {
+        if(current == last) {
             newLink.next = null;
             last = newLink;
-        }
-        else
-        {
+        } else {
             newLink.next = current.next;
             current.next.previous = newLink;
         }
@@ -104,14 +98,10 @@ class DoublyLinkedList
         return temp;
     }
     // -------------------------------------------------------------
-    public Link deleteKey(long key)
-    {
+    public Link deleteKey(long key) {
         Link current = first;
-
-        while(current.dData != key)
-        {
+        while(current.dData != key) {
             current = current.next;
-
             if(current == null)
                 return null;
         }
@@ -135,8 +125,7 @@ class DoublyLinkedList
 
         Link current = first;
 
-        while(current != null)
-        {
+        while(current != null) {
             current.displayLink();
             current = current.next;
         }
@@ -159,15 +148,13 @@ class DoublyLinkedList
         System.out.println("");
     }
     // -------------------------------------------------------------
-    public long peekFirst()
-    {
+    public long peekFirst() {
         Link current = first;
         return current.dData;
     }
 // -------------------------------------------------------------
 
-    public long peekLast()
-    {
+    public long peekLast() {
         Link current = last;
         return current.dData;
     }
