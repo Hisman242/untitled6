@@ -20,7 +20,7 @@ class TreeApp
         }
 
         System.out.println(Arrays.toString(arr));
-        huffman.buildHuffmanTree(arr, count);
+        huffman.buildHuffmanTree(arr);
     }
 
     // ------------------------------------------------------------

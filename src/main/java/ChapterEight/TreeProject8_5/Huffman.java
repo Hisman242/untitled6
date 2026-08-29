@@ -1,40 +1,41 @@
 package ChapterEight.TreeProject8_5;
 
 import javax.swing.tree.TreeNode;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Huffman {
-    public void buildHuffmanTree(String[] text, int nItems){
-        Node[] nodeArr = new Node[nItems];
-        int nodeCounter = 0;
-        int currentLetter = 0;
 
-        for (int i = 0; i < nItems; i++) {
-            text[i] = "";
-        }
+
+    public void buildHuffmanTree(String[] text){
+        HashMap<Character, Integer> map = findTheNumberOfRepetitions(text);
+        Node[] nodes;
     }
 
-    public char[] parsingIntoACharArray(String[] text){
-        char[] charArray = new char[1024];
+    public String parsingIntoAString(String[] text){
+        String result = "";
         for (int i = 0; i < text.length; i++) {
-            for (int j = 0; j < charArray.length; j++) {
-
+            result += text[i];
+            if(i != text.length){
+                result+="\n";
             }
         }
-        return null;
+        return result;
     }
 
-    public void findTheNumberOfRepetitions(String[] text){
-        Character[] charArray = new Character[text.length];
-        for (int i = 0; i < text.length; i++) {
-
-        }
+    public HashMap<Character, Integer> findTheNumberOfRepetitions(String[] text){
         HashMap<Character, Integer> map = new HashMap<Character, Integer>();
-        for (int i = 0; i < text.length; i++) {
-            if(!map.containsKey(text[i])){
-
+        String string = parsingIntoAString(text);
+        for (int i = 0; i < string.length(); i++) {
+            if(map.containsKey(string.charAt(i))){
+                int value = map.get(string.charAt(i));
+                map.put(string.charAt(i), value + 1);
+            } else{
+                map.put(string.charAt(i),1);
             }
         }
+        return map;
     }
 
 
