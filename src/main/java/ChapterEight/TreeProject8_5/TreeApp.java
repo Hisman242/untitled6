@@ -1,84 +1,26 @@
 package ChapterEight.TreeProject8_5;
 
 import java.io.*;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
+import java.util.Scanner;
 
 class TreeApp
 {
-    public static void main(String[] args) throws IOException
-    {
-        int value;
-        Tree theTree = new Tree();
+    public static void main(String[] args) throws IOException {
 
-        theTree.insert(50, 1.5);
-        theTree.insert(25, 1.2);
-        theTree.insert(75, 1.7);
-        theTree.insert(12, 1.5);
-        theTree.insert(37, 1.2);
-        theTree.insert(43, 1.7);
-        theTree.insert(30, 1.5);
-        theTree.insert(33, 1.2);
-        theTree.insert(87, 1.7);
-        theTree.insert(93, 1.5);
-        theTree.insert(97, 1.5);
-
-        while(true)
-        {
-            System.out.print("Enter first letter of show, ");
-            System.out.print("insert, find, delete, or traverse: ");
-
-            int choice = getChar();
-
-            switch(choice)
-            {
-                case 's':
-                    theTree.displayTree();
-                    break;
-
-                case 'i':
-                    System.out.print("Enter value to insert: ");
-                    value = getInt();
-                    theTree.insert(value, value + 0.9);
-                    break;
-
-                case 'f':
-                    System.out.print("Enter value to find: ");
-                    value = getInt();
-                    Node found = theTree.find(value);
-
-                    if(found != null)
-                    {
-                        System.out.print("Found: ");
-                        found.displayNode();
-                        System.out.print("\n");
-                    }
-                    else
-                        System.out.print("Could not find ");
-
-                    break;
-
-                case 'd':
-                    System.out.print("Enter value to delete: ");
-                    value = getInt();
-
-                    boolean didDelete = theTree.delete(value);
-
-                    if(didDelete)
-                        System.out.print("Deleted " + value + '\n');
-                    else
-                        System.out.print("Could not delete ");
-
-                    break;
-
-                case 't':
-                    System.out.print("Enter type 1, 2 or 3: ");
-                    value = getInt();
-                    theTree.traverse(value);
-                    break;
-
-                default:
-                    System.out.print("Invalid entry\n");
-            }
+        Huffman huffman = new Huffman();
+        System.out.println("Enter your text message");
+        String[] arr = new String[10];
+        String message = "";
+        int count = 0;
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        while(!(message = br.readLine()).equals("")){
+            arr[count++] = message;
         }
+
+        System.out.println(Arrays.toString(arr));
+        huffman.buildHuffmanTree(arr, count);
     }
 
     // ------------------------------------------------------------
