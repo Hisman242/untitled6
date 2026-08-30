@@ -1,26 +1,24 @@
 package ChapterEight.TreeProject8_5;
 
 import java.io.*;
-import java.nio.ByteBuffer;
-import java.util.Arrays;
-import java.util.Scanner;
-
 class TreeApp
 {
     public static void main(String[] args) throws IOException {
 
-        Huffman huffman = new Huffman();
+        Huffman huffman = new Huffman();//Создаем объект, который выполняет основную работу
         System.out.println("Enter your text message");
-        String[] arr = new String[10];
-        String message = "";
-        int count = 0;
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        while(!(message = br.readLine()).equals("")){
-            arr[count++] = message;
+        String[] arr = new String[1024];//Создаем массив, в котором будут наши введенные строки
+        String message = "";//Переменная одной прочитаной строки
+        int count = 0;//Кол-во введенных строк
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));//Поток ввода
+        while(!(message = br.readLine()).equals("")){//Цикл ввода
+            arr[count++] = message;//Добавляем в массив прочитанную строчку
         }
-
-        System.out.println(Arrays.toString(arr));
-        huffman.buildHuffmanTree(arr);
+        System.out.println("Your message:");//Выводим наше сообщение
+        for (int i = 0; i < count; i++) {
+            System.out.println(arr[i]);
+        }
+        huffman.buildHuffmanTree(arr,count);//Запукск алгоритма Дэвида Хаффмана
     }
 
     // ------------------------------------------------------------

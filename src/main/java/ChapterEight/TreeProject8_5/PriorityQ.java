@@ -9,30 +9,33 @@ class PriorityQ
 {
     // Элементы массива сортируются по значению ключа,
     // от максимумa (0) до минимума (maxSize-1)
-    private int maxSize;
-    private long[] queArray;
-    private int nItems;
-
+    private int maxSize; //Максимальная вместимость очереди
+    private Tree[] queArray;//Массив, в котором храняться деревья
+    private int nItems;//Текущее кол-во деревьев в очереди(Сколько их всего на самом деле создано)
+    //------------------------------------------------------------
+    public int size(){//Возвращает текущее кол-во реально созданных деревьев
+        return nItems;
+    }
     //------------------------------------------------------------
     public PriorityQ(int s)          // Конструктор
     {
         maxSize = s;
-        queArray = new long[maxSize];
+        queArray = new Tree[maxSize];
         nItems = 0;
     }
 
     //------------------------------------------------------------
-    public void insert(long item)    // Вставка элемента
-    {
-        int j;
+    public void insert(Tree item)    // Вставка элемента(Принимает дерево и вставляет в очередь)
+    { //Сортровка выполняется так min frequency  -> max frequency(То есть больший приоритет у меньших значений)
+        int j; //Переменная для прохода по массиву
 
         if(nItems==0)                      // Если очередь пуста,
             queArray[nItems++] = item;     // вставляем в ячейку 0
         else                               // Если очередь содержит элементы
         {
-            for(j=nItems-1; j>=0; j--)     // Перебор в обратном направлении
+            for(j=nItems-1; j>=0; j--)     // Перебор в обратном направлении(Потому что это очередь, наименьшие эл-ты у нас в начале)
             {
-                if( item > queArray[j] )   // Если новый элемент больше,
+                if(item.root.frequency > queArray[j].root.frequency )   // Если новый элемент больше,
                     queArray[j+1] = queArray[j]; // сдвинуть вверх
                 else                       // Если меньше,
                     break;                 // сдвиг прекращается
@@ -44,13 +47,13 @@ class PriorityQ
     }
 
     //------------------------------------------------------------
-    public long remove()             // Извлечение минимального элемента
+    public Tree remove()             // Извлечение минимального элемента
     {
         return queArray[--nItems];
     }
 
     //------------------------------------------------------------
-    public long peekMin()            // Чтение минимального элемента
+    public Tree peekMin()            // Чтение минимального элемента
     {
         return queArray[nItems-1];
     }
